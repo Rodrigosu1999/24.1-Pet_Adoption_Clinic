@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block title %} Homepage {% endblock %} {% block
+content %}
+<h1 class="display-1">Available Pets</h1>
+{% for pet in av_pets %}
+<div class="container-fluid text-center">
+  <div class="row">
+    <div class="col">
+      <a href="/{{pet.id}}" class="display-3 link-dark text-decoration-none"
+        >{{pet.name}}</a
+      >
+    </div>
+    <div class="col">
+      <img src="{{pet.photo_url}}" class="img-thumbnail img-fluid w-50" />
+    </div>
+    <div class="col">
+      <p class="display-6">Available!</p>
+    </div>
+  </div>
+</div>
+{% endfor %}
+<h1>Unavailable Pets</h1>
+{% for pet in not_av_pets %}
+<div class="container-fluid text-center">
+  <div class="row">
+    <div class="col">
+      <a href="/{{pet.id}}" class="display-3 link-dark text-decoration-none"
+        >{{pet.name}}</a
+      >
+    </div>
+    <div class="col">
+      <img src="{{pet.photo_url}}" class="img-thumbnail img-fluid w-50" />
+    </div>
+    <div class="col">
+      <p class="display-6">Adopted</p>
+    </div>
+  </div>
+</div>
+{% endfor %} {% endblock %}

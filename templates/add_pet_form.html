@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block title %} New Pet {% endblock %} {% block
+content %}
+<h1 class="display-1">Add new pet</h1>
+<form id="add_pet_form" action="/add" method="POST">
+  {{form.hidden_tag()}} {{form.name.label(class_="form-label")}}
+  {{form.name(class_="form-control")}}
+  {{form.species.label(class_="form-label")}}
+  {{form.species(class_="form-select")}}
+  {{form.photo_url.label(class_="form-label")}}
+  {{form.photo_url(class_="form-control")}}
+  {{form.age.label(class_="form-label")}} {{form.age(class_="form-control")}}
+  {{form.notes.label(class_="form-label")}}
+  {{form.notes(class_="form-control")}}
+  <button type="submit" class="btn btn-primary mt-2">Add pet</button>
+</form>
+{% endblock %}

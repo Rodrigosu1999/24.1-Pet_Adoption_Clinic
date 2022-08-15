@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block title %} {{pet.name}} {% endblock %} {% block
+content %}
+<h1 class="display-1">{{pet.name}}</h1>
+<h2>Species</h2>
+<p class="display-4">{{pet.species.capitalize()}}</p>
+<img
+  src="{{pet.photo_url}}"
+  alt="{{pet.name}}"
+  class="img-thumbnail img-fluid w-25"
+/>
+{% if pet.age != "" and pet.age != None %}
+<p>{{pet.name}} is {{pet.age}} years old!</p>
+{% endif %}
+<h2>Edit {{pet.name}}</h2>
+{% for msg in get_flashed_messages() %}
+<p>{{msg}}</p>
+{% endfor %}
+<form id="add_pet_form" action="/{{pet.id}}" method="POST">
+  {{form.hidden_tag()}} {{form.photo_url.label(class_="form-label")}}
+  {{form.photo_url(class_="form-control")}}
+  {{form.notes.label(class_="form-label")}}
+  {{form.notes(class_="form-control")}}
+  {{form.available.label(class_="form-check-label")}}
+  {{form.available(class_="form-check", checked_=pet.available)}}
+
+  <button type="submit" class="btn btn-primary mt-2">Save</button>
+</form>
+{% endblock %}
